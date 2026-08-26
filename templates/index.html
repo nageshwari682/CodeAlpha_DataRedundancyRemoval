@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Data Redundancy Removal System</title></head>
+<body>
+    <h2>Add New Record</h2>
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="email" placeholder="Email">
+    <button onclick="submitRecord()">Submit</button>
+    <p id="result"></p>
+
+    <script>
+        async function submitRecord() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const res = await fetch('/add_record', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name, email})
+            });
+            const data = await res.json();
+            document.getElementById('result').innerText = data.message;
+        }
+    </script>
+</body>
+</html>
