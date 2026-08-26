@@ -22,18 +22,18 @@ A system that identifies and prevents redundant data using a two-layer validatio
 **Accepted:**
 
 
-![Accepted](screenshot/accepted.png)
+![Accepted](screenshots/accepted.png)
 
 
 
 **Rejected (exact duplicate):**
 
 
-![Rejected](screenshot/rejected.png)
+![Rejected](screenshots/rejected.png)
 
 
 
 **Flagged (near duplicate):**
 
 
-![Flagged](screenshot/flagged.png)
+![Flagged](screenshots/flagged.png)
