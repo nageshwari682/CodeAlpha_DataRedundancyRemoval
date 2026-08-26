@@ -1,0 +1,6 @@
+﻿git addvenv/
+__pycache__/
+records.db
+*.pyc
+screenshots_old/
+venv/

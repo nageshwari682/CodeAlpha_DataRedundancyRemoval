@@ -17,7 +17,6 @@ A system that identifies and prevents redundant data using a two-layer validatio
 3. Open `http://127.0.0.1:5000`
 
 ## Screenshots
-## Screenshots
 
 **Accepted:**
 
