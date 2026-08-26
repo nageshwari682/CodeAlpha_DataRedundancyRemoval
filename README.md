@@ -16,7 +16,24 @@ A system that identifies and prevents redundant data using a two-layer validatio
 2. `python app.py`
 3. Open `http://127.0.0.1:5000`
 
-## Screenshots)
-"C:\Users\karth\OneDrive\Pictures\Screenshots\Screenshot 2026-08-26 174916.png"
-"C:\Users\karth\OneDrive\Pictures\Screenshots\Screenshot 2026-08-26 175000.png"
-"C:\Users\karth\OneDrive\Pictures\Screenshots\Screenshot 2026-08-26 175038.png"
+## Screenshots
+## Screenshots
+
+**Accepted:**
+
+
+![Accepted](screenshot/accepted.png)
+
+
+
+**Rejected (exact duplicate):**
+
+
+![Rejected](screenshot/rejected.png)
+
+
+
+**Flagged (near duplicate):**
+
+
+![Flagged](screenshot/flagged.png)
