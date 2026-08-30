@@ -1,3 +1,5 @@
 flask
 streamlit
 gunicorn
+fuzzywuzzy
+python-Levenshtein
