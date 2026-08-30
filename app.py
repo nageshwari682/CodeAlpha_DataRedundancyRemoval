@@ -1,36 +1,28 @@
-from flask import Flask, request, jsonify, render_template
-from database import init_db, insert_record
+import streamlit as st
+from database import init_db, insert_record, get_all_records
 from redundancy_checker import validate_and_classify
 
-app = Flask(__name__)
 init_db()
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+st.title("Data Redundancy Removal System")
+st.header("Add New Record")
 
-@app.route('/add_record', methods=['POST'])
-def add_record():
-    data = request.get_json()
-    name = data.get('name')
-    email = data.get('email')
+name = st.text_input("Name")
+email = st.text_input("Email")
 
+if st.button("Submit"):
     if not name or not email:
-        return jsonify({"error": "Name and email required"}), 400
-
-    result = validate_and_classify(name, email)
-
-    if result['status'] == 'accepted':
-        insert_record(name, email, result['hash'])
-        return jsonify({"message": "Record added successfully", "status": "accepted"}), 201
-    elif result['status'] == 'rejected':
-        return jsonify({"message": "Exact duplicate rejected", "status": "rejected"}), 409
+        st.error("Name and email required")
     else:
-        return jsonify({
-            "message": "Flagged as possible duplicate — needs review",
-            "status": "flagged",
-            "similar_record": result['similar_to']
-        }), 202
+        result = validate_and_classify(name, email)
+        if result['status'] == 'accepted':
+            insert_record(name, email, result['hash'])
+            st.success("Record added successfully")
+        elif result['status'] == 'rejected':
+            st.warning("Exact duplicate rejected")
+        else:
+            st.info(result.get('message', 'Flagged for review'))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+st.header("All Records")
+records = get_all_records()
+st.table(records)
